@@ -1,0 +1,38 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: crosshair;
+  color: white;
+}
+.games {
+  height: 100vh;
+  background-image: url("images/stage.png");
+}
+.score-container {
+  background-color: black;
+  width: 8rem;
+  height: 8rem;
+  color: #ffffff;
+  top: 0;
+  right: 0;
+  border: 2px solid greenyellow;
+  border-radius: 10px;
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  align-items: center;
+}
+.menu {
+  margin-top: 100px;
+  z-index: 1;
+  background-color: black;
+  border-radius: 10px;
+  padding: 20px;
+}
+.duck {
+  position: absolute;
+  transition: 0.5s ease-in;
+}
+.human {
+  position: absolute;
+  transition: 0.5s ease-out;
+}
