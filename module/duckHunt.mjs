@@ -1,9 +1,10 @@
 class Games {
   constructor() {
+    this.x = 0;
     this.duck = document.querySelector(".duck");
     this.score = document.querySelector(".score");
     this.timeLeft = document.querySelector(".time");
-    this.human = document.querySelectorAll(".human");
+    this.birds = document.querySelectorAll(".birds");
     this.menu = document.querySelector(".menu");
     this.themeSong = document.querySelector("#theme");
     this.deathSong = document.querySelector("#lose");
@@ -29,18 +30,13 @@ class Games {
     return Math.floor(Math.random() * Math.floor(num));
   }
 
-  click() {
-    this.moveDuck();
-    this.moveHuman();
-  }
-
   duckClick() {
-    this.click();
+    this.moveDuck();
     this.increaseScore();
   }
 
-  humanClick() {
-    this.click();
+  birdsClick() {
+    this.moveBirds();
     this.decreaseScore();
   }
 
@@ -70,7 +66,7 @@ class Games {
     }
     setInterval(() => {
       this.moveDuck();
-      this.moveHuman();
+      this.moveBirds();
     }, speed);
   }
 
@@ -78,13 +74,13 @@ class Games {
     this.themeSong.play();
     this.menu.style.display = "none";
     this.moveDuck();
-    this.moveHuman();
+    this.moveBirds();
     this.duck.onclick = () => {
       this.duckClick();
     };
-    this.human.forEach((hum) => {
-      hum.onclick = () => {
-        this.humanClick();
+    this.birds.forEach((bird) => {
+      bird.onclick = () => {
+        this.birdsClick();
       };
     });
     this.changePosition(difficulty);
@@ -116,12 +112,14 @@ class Games {
     this.duck.style.left = this.randomPosition(w) * 0.9 + "px";
   }
 
-  moveHuman() {
+  moveBirds() {
     const w = window.innerWidth;
     const h = window.innerHeight;
-    this.human.forEach((hum) => {
-      hum.style.top = this.randomPosition(h) * 0.5 + "px";
-      hum.style.left = this.randomPosition(w) * 0.9 + "px";
+    this.birds.forEach((bird) => {
+      bird.style.top = this.randomPosition(h) * 0.5 + "px";
+      bird.style.left = this.randomPosition(w) * 0.9 + "px";
     });
   }
 }
+
+export default Games;
