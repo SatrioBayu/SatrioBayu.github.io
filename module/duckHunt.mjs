@@ -1,6 +1,5 @@
 class Games {
   constructor() {
-    this.x = 0;
     this.duck = document.querySelector(".duck");
     this.score = document.querySelector(".score");
     this.timeLeft = document.querySelector(".time");
@@ -12,6 +11,9 @@ class Games {
     this.easy = document.querySelector(".easy");
     this.medium = document.querySelector(".medium");
     this.hard = document.querySelector(".hard");
+    this.shot = document.querySelector("#shot");
+    this.dog = document.querySelector(".dog");
+    this.winDog = document.querySelector(".winDog");
   }
 
   init() {
@@ -31,11 +33,13 @@ class Games {
   }
 
   duckClick() {
+    this.shot.play();
     this.moveDuck();
     this.increaseScore();
   }
 
   birdsClick() {
+    this.shot.play();
     this.moveBirds();
     this.decreaseScore();
   }
@@ -47,6 +51,7 @@ class Games {
       if (Number(this.timeLeft.textContent) === 0) {
         this.themeSong.pause();
         this.deathSong.play();
+        this.dog.classList.toggle("hidden");
         setTimeout(() => {
           alert("LOSERR!!");
           window.location.reload();
@@ -71,6 +76,8 @@ class Games {
   }
 
   play(difficulty) {
+    this.shot.playbackRate = 2.5;
+    this.themeSong.volume = 0.3;
     this.themeSong.play();
     this.menu.style.display = "none";
     this.moveDuck();
@@ -93,6 +100,7 @@ class Games {
     if (Number(this.score.textContent) === 100) {
       this.themeSong.pause();
       this.winSong.play();
+      this.winDog.classList.toggle("hidden");
       setTimeout(() => {
         alert("You Win!");
         window.location.reload();
