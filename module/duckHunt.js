@@ -76,6 +76,7 @@ class Games {
   }
 
   play(difficulty) {
+    this.duck.classList.toggle("hidden");
     this.shot.playbackRate = 2.5;
     this.themeSong.volume = 0.3;
     this.themeSong.play();
@@ -86,6 +87,7 @@ class Games {
       this.duckClick();
     };
     this.birds.forEach((bird) => {
+      bird.classList.toggle("hidden");
       bird.onclick = () => {
         this.birdsClick();
       };
@@ -129,5 +131,3 @@ class Games {
     });
   }
 }
-
-export default Games;
